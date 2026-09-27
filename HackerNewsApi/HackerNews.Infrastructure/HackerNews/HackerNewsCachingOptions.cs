@@ -7,15 +7,16 @@
         /// <summary>
         /// Seconds that the Id list is cached
         /// </summary>
-        public int IdListCacheSeconds { get; set; }
+        public int IdListCacheSeconds { get; set; } = 60;
 
         /// <summary>
         /// Seconds that each item is cached
         /// </summary>
-        public int ItemCacheSeconds { get; set; }
-        
+        public int ItemCacheSeconds { get; set; } = 240;
+
         /// <summary>
         /// Maximum number of concurrent upstream requests
         /// </summary>
-        public int MaxConcurrentUpstreamRequests { get; set; }
+        public int MaxConcurrentUpstreamRequests { get; set; } = 10;
+    }
 }

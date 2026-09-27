@@ -1,4 +1,4 @@
-﻿using HackerNewsApi.Domain.Entities;
+﻿using HackerNews.Domain.Entities;
 
 namespace HackerNews.Application.Interfaces
 {

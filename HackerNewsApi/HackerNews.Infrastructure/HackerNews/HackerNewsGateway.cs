@@ -1,5 +1,5 @@
 ﻿using HackerNews.Application.Interfaces;
-using HackerNewsApi.Domain.Entities;
+using HackerNews.Domain.Entities;
 using Microsoft.Extensions.Logging;
 using System.Net.Http.Json;
 

@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace HackerNews.Application.Common
+﻿namespace HackerNews.Application.Common
 {
-    public class BestStoriesOptions
+    public sealed class BestStoriesOptions
     {
+        public const string SectionName = "BestStories";
+
+        public int MaxStories { get; set; } = 500;
     }
 }

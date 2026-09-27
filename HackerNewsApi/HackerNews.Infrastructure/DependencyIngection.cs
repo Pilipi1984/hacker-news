@@ -1,10 +1,11 @@
-﻿using HackerNews.Infrastructure.HackerNews;
+﻿using HackerNews.Application.Interfaces;
+using HackerNews.Infrastructure.HackerNews;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
-namespace HackerNewsApi.Infrastructure
+namespace HackerNews.Infrastructure
 {
     public static class DependencyInjection
     {
@@ -18,7 +19,21 @@ namespace HackerNewsApi.Infrastructure
 
             services.AddMemoryCache();
 
-            services.AddHttpClient<http
+            services.AddHttpClient<HackerNewsGateway>((serviceProvider, client) =>
+            {
+                var options = serviceProvider.GetRequiredService<IOptions<HackerNewsClientOptions>>();
+                client.BaseAddress = new Uri(options.Value.BaseUrl);
+                client.Timeout = TimeSpan.FromSeconds(options.Value.TimeoutSecond);
+            }).AddStandardResilienceHandler();
+
+            services.AddSingleton<IHackerNewsGateway>(serviceProvider =>
+            {
+                var client = serviceProvider.GetRequiredService<HackerNewsGateway>();
+                var cache = serviceProvider.GetRequiredService<IMemoryCache>();
+                var cachingOptions = serviceProvider.GetRequiredService<IOptions<HackerNewsCachingOptions>>();
+                var memoryCache = serviceProvider.GetRequiredService<IMemoryCache>();
+                return new CachingHackerNewsGateway(client, memoryCache, cachingOptions.Value);
+            });
 
             return services;
         }
