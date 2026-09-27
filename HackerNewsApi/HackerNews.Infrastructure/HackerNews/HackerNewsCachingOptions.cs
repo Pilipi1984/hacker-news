@@ -1,6 +1,6 @@
 ﻿namespace HackerNews.Infrastructure.HackerNews
 {
-    public sealed class HackerNewsCatchingOptions
+    public sealed class HackerNewsCachingOptions
     {
         public const string SectionName = "HackerNews:Caching";
 
