@@ -2,9 +2,6 @@
 using HackerNews.Application.Dtos;
 using HackerNews.Application.Interfaces;
 using HackerNews.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace HackerNews.Application.Services
 {

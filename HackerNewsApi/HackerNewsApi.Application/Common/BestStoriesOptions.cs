@@ -4,6 +4,6 @@
     {
         public const string SectionName = "BestStories";
 
-        public int MaxStories { get; set; } = 500;
+        public int MaxStories { get; set; } = 300;
     }
 }
