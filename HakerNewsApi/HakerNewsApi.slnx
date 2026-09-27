@@ -1,4 +1,6 @@
 <Solution>
-  <Project Path="HakerNewsApi.Domain/HakerNewsApi.Domain.csproj" />
-  <Project Path="HakerNewsApi/HakerNewsApi.csproj" />
+  <Project Path="HakerNews.Infrastructure/HackerNews.Infrastructure.csproj" Id="1515f575-4a42-4680-a3b7-19c281e6fed9" />
+  <Project Path="HakerNewsApi.Application/HackerNews.Application.csproj" Id="0f8c3698-5b9f-41a2-bb36-400c912189cb" />
+  <Project Path="HakerNewsApi.Domain/HackerNews.Domain.csproj" />
+  <Project Path="HakerNewsApi/HackerNews.Api.csproj" />
 </Solution>
