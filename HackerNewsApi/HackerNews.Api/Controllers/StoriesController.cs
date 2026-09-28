@@ -6,7 +6,7 @@ namespace HackerNews.Api.Controllers
 {
     [ApiController]
     [ApiVersion("1.0")]
-    [Route("v{version:apiVersion}/stories")]
+    [Route("api/v{version:apiVersion}/stories")]
     public sealed class StoriesController(IBestStoriesService bestStoriesService) : ControllerBase
     {
         private readonly IBestStoriesService _bestStoriesService = bestStoriesService;

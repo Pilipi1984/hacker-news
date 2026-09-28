@@ -6,7 +6,7 @@ namespace HackerNews.Api.Controllers
 {
     [ApiController]
     [ApiVersion("1.0")]
-    [Route("v{version:apiVersion}/status")]
+    [Route("api/v{version:apiVersion}/status")]
     [ProducesResponseType(typeof(StatusResponse), StatusCodes.Status200OK)]
     public class StatusController : ControllerBase
     {
@@ -19,10 +19,11 @@ namespace HackerNews.Api.Controllers
         [HttpGet]
         public IActionResult Get()
         {
+            var apiVersion = HttpContext.RequestedApiVersion;
             var response = new StatusResponse
             {
                 Status = "OK",
-                Version = typeof(StatusController).Assembly.GetName().Version?.ToString() ?? "unknown",
+                Version = apiVersion?.ToString() ?? "unknown",
                 Environment = HttpContext.RequestServices
                     .GetRequiredService<IWebHostEnvironment>().EnvironmentName,
                 UtcTimestamp = DateTime.UtcNow,
