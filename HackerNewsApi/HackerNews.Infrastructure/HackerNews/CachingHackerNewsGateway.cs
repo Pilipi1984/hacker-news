@@ -1,6 +1,7 @@
 ﻿using HackerNews.Application.Interfaces;
 using HackerNews.Domain.Entities;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Options;
 
 namespace HackerNews.Infrastructure.HackerNews
 {
@@ -16,11 +17,11 @@ namespace HackerNews.Infrastructure.HackerNews
 
         private readonly SemaphoreSlim _idsRefreshLock = new(1, 1);
 
-        public CachingHackerNewsGateway(IHackerNewsGateway inner, IMemoryCache cache, HackerNewsCachingOptions options)
+        public CachingHackerNewsGateway(IHackerNewsGateway inner, IMemoryCache cache, IOptions<HackerNewsCachingOptions> options)
         {
             _inner = inner;
             _cache = cache;
-            _options = options;
+            _options = options.Value;
             _throttle = new SemaphoreSlim(_options.MaxConcurrentUpstreamRequests);
         }
 

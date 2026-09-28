@@ -32,7 +32,7 @@ namespace HackerNews.Infrastructure
                 var cache = serviceProvider.GetRequiredService<IMemoryCache>();
                 var cachingOptions = serviceProvider.GetRequiredService<IOptions<HackerNewsCachingOptions>>();
                 var memoryCache = serviceProvider.GetRequiredService<IMemoryCache>();
-                return new CachingHackerNewsGateway(client, memoryCache, cachingOptions.Value);
+                return new CachingHackerNewsGateway(client, memoryCache, cachingOptions);
             });
 
             return services;
