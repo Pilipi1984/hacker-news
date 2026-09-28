@@ -58,7 +58,7 @@ In the `Development` environment, Swagger UI is available at `http://localhost:5
 Quick check:
 
 ```bash
-curl "http://localhost:5017/api/v1.0/stories?n=10"
+curl "http://localhost:5017/api/v1.0/status"
 ```
 
 ## Configuration
@@ -105,6 +105,7 @@ Request flow:
 - If `n` is greater than the number of available stories (or than `BestStories:MaxStories`), the API returns as many as possible instead of failing.
 - Stories that are deleted, dead, or have no title are excluded, so the response may contain fewer than `n` items.
 - If the `url` of a story is missing, `uri` is returned as an empty string.
+- If the `by` of a story is missing, `postedBy` is returned as an empty string.
 - `time` is exposed as an ISO 8601 date-time converted from the Unix time provided by Hacker News.
 - `commentCount` maps to the `descendants` field.
 - A story that cannot be retrieved upstream (network error, timeout) is logged and skipped rather than failing the whole request.
@@ -124,7 +125,7 @@ Request flow:
 **Performance and scalability**
 
 - Fetch only as many candidate stories as needed instead of the whole ids list on each call, or pre-compute the sorted top list in the background warmer and serve it from cache.
-- Add response caching / `ETag` headers and rate limiting (`AddRateLimiter`) on the public endpoint.
+- Add response caching headers and rate limiting on the public endpoint.
 
 **Observability and operations**
 
