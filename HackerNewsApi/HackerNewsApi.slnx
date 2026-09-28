@@ -1,7 +1,7 @@
 <Solution>
   <Project Path="HackerNews.Infrastructure.Tests/HackerNews.Infrastructure.Tests.csproj" Id="5bf60e54-9485-47d3-a7c2-e4a44a83592a" />
   <Project Path="HackerNews.Infrastructure/HackerNews.Infrastructure.csproj" Id="1515f575-4a42-4680-a3b7-19c281e6fed9" />
-  <Project Path="HackerNewsApi.Application/HackerNews.Application.csproj" Id="0f8c3698-5b9f-41a2-bb36-400c912189cb" />
-  <Project Path="HackerNewsApi.Domain/HackerNews.Domain.csproj" />
-  <Project Path="HackerNewsApi/HackerNews.Api.csproj" />
+  <Project Path="HackerNews.Application/HackerNews.Application.csproj" Id="0f8c3698-5b9f-41a2-bb36-400c912189cb" />
+  <Project Path="HackerNews.Domain/HackerNews.Domain.csproj" />
+  <Project Path="HackerNews.Api/HackerNews.Api.csproj" />
 </Solution>

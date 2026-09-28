@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HackerNewsApi.Domain\HackerNews.Domain.csproj" />
+    <ProjectReference Include="..\HackerNews.Domain\HackerNews.Domain.csproj" />
   </ItemGroup>
 
 </Project>
