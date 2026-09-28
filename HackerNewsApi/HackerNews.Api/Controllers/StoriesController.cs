@@ -16,7 +16,7 @@ namespace HackerNews.Api.Controllers
         {
             if (n <= 0) 
             {
-                return BadRequest("Invalid parameter: n must be a positive integer.");
+                return BadRequest("Invalid parameter: n must be greater than zero.");
             }
 
             var stories = await _bestStoriesService.GetBestStoriesAsync(n, ct);
