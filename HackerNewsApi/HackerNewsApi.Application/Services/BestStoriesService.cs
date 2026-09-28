@@ -2,13 +2,14 @@
 using HackerNews.Application.Dtos;
 using HackerNews.Application.Interfaces;
 using HackerNews.Domain.Entities;
+using Microsoft.Extensions.Options;
 
 namespace HackerNews.Application.Services
 {
-    public class BestStoriesService (IHackerNewsGateway gateway, BestStoriesOptions options) : IBestStoriesService
+    public class BestStoriesService (IHackerNewsGateway gateway, IOptions<BestStoriesOptions> options) : IBestStoriesService
     {
         private readonly IHackerNewsGateway _gateway = gateway;
-        private readonly BestStoriesOptions _options = options;
+        private readonly BestStoriesOptions _options = options.Value;
 
         public async Task<IReadOnlyList<StoryDto>> GetBestStoriesAsync(int n, CancellationToken ct)
         {
