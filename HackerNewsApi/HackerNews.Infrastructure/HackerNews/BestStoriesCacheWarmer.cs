@@ -16,15 +16,15 @@ namespace HackerNews.Infrastructure.HackerNews
         private readonly HackerNewsCachingOptions _options = options;
         private readonly ILogger<BestStoriesCacheWarmer> _logger = logger;
 
-        protected override async Task ExecuteAsync(CancellationToken cancellationToken)
+        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             var interval = TimeSpan.FromSeconds(Math.Max(5, _options.IdListCacheSeconds * 0.75));
 
-            while (!cancellationToken.IsCancellationRequested)
+            while (!stoppingToken.IsCancellationRequested)
             {
                 try
                 {
-                    await _gateway.GetBestStoryIdsAsync(cancellationToken);
+                    await _gateway.GetBestStoryIdsAsync(stoppingToken);
                 }
                 catch (Exception ex) when (ex is not OperationCanceledException)
                 {
@@ -33,7 +33,7 @@ namespace HackerNews.Infrastructure.HackerNews
 
                 try
                 {
-                    await Task.Delay(interval, cancellationToken);
+                    await Task.Delay(interval, stoppingToken);
                 }
                 catch (OperationCanceledException opEx)
                 {

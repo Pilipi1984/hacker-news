@@ -30,7 +30,7 @@ namespace HackerNews.Application.Services
             var stories = await Task.WhenAll(tasks);
 
             return [.. stories
-                .Where(story => story is not null && story is {IsDead: false, IsDeleted: false } && !string.IsNullOrEmpty(story.Title))
+                .Where(story => story is {IsDead: false, IsDeleted: false } && !string.IsNullOrEmpty(story.Title))
                 .OrderByDescending(story => story!.Score)
                 .Take(Math.Min(numberOfStories, stories.Length))
                 .Select(MapToDto)];
