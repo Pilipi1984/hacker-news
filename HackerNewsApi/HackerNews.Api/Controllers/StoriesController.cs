@@ -1,10 +1,12 @@
-﻿using HackerNews.Application.Interfaces;
+﻿using Asp.Versioning;
+using HackerNews.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HackerNews.Api.Controllers
 {
     [ApiController]
-    [Route("api/stories")]
+    [ApiVersion("1.0")]
+    [Route("v{version:apiVersion}/stories")]
     public sealed class StoriesController(IBestStoriesService bestStoriesService) : ControllerBase
     {
         private readonly IBestStoriesService _bestStoriesService = bestStoriesService;

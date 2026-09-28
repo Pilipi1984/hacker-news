@@ -1,10 +1,12 @@
-﻿using HackerNews.Application.Dtos;
+﻿using Asp.Versioning;
+using HackerNews.Application.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HackerNews.Api.Controllers
 {
     [ApiController]
-    [Route("api/status")]
+    [ApiVersion("1.0")]
+    [Route("v{version:apiVersion}/status")]
     [ProducesResponseType(typeof(StatusResponse), StatusCodes.Status200OK)]
     public class StatusController : ControllerBase
     {
